@@ -1,0 +1,13 @@
+{{ $s := .Site.Data.content_stats }}
+<h2>Site Stats</h2>
+<ul>
+  <li>Total Posts: {{ $s.total_posts }}</li>
+  <li>Total Words: {{ $s.word_count }}</li>
+</ul>
+
+<h3>Posts per Year</h3>
+<ul>
+{{ range $year, $count := $s.years }}
+  <li>{{ $year }}: {{ $count }}</li>
+{{ end }}
+</ul>

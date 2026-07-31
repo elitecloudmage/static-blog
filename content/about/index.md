@@ -20,5 +20,4 @@ I don't have a background in tech and decided to start early May, 2025 where I w
 
 ---
 
-Let me know what you think about the blog, send me a DM - let's talk some shit or I can buy you a coffee, maybe help each other out 
-
+Thanks for reading!

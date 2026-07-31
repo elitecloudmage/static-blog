@@ -1,0 +1,14 @@
+{
+  "total_posts": 4,
+  "tags": {
+    "DevOps": 1,
+    "AWS": 1,
+    "Terraform": 1,
+    "Self-Healing": 1,
+    "CI/CD": 1
+  },
+  "years": {
+    "2025": 4
+  },
+  "word_count": 1274
+}
