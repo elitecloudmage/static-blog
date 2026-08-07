@@ -1,0 +1,48 @@
+<header class="sticky top-0 z-40 -mx-6 sm:-mx-14 md:-mx-24 lg:-mx-32 px-6 sm:px-14 md:px-24 lg:px-32 py-4 bg-neutral/90 dark:bg-neutral-800/90 backdrop-blur border-b border-neutral-200 dark:border-neutral-700">
+  <div id="site-nav" class="flex items-center justify-between gap-4">
+    <a href="/" class="text-base font-semibold text-neutral-900 dark:text-neutral shrink-0">
+      {{ site.Params.author.name | default site.Title }}
+    </a>
+
+    <nav class="flex items-center gap-5">
+      {{ range site.Menus.main }}
+        <a
+          href="{{ .URL }}"
+          class="nav-link text-sm font-medium text-neutral-600 hover:text-primary-600 dark:text-neutral-300 dark:hover:text-primary-400">
+          {{ .Name }}
+        </a>
+      {{ end }}
+
+      {{ with site.Params.author.links }}
+        <span class="hidden sm:block h-5 w-px bg-neutral-300 dark:bg-neutral-600"></span>
+        <span class="flex items-center gap-3">
+          {{ range . }}
+            {{ range $platform, $link := . }}
+              <a
+                href="{{ $link }}"
+                {{ if in $link "http" }}target="_blank" rel="noopener"{{ end }}
+                aria-label="{{ $platform }}"
+                class="bf-icon-color-hover">
+                {{ partial "icon.html" $platform }}
+              </a>
+            {{ end }}
+          {{ end }}
+        </span>
+      {{ end }}
+    </nav>
+  </div>
+</header>
+
+<script>
+  (function () {
+    var path = window.location.pathname;
+    document.querySelectorAll("#site-nav .nav-link").forEach(function (link) {
+      var linkPath = new URL(link.href).pathname;
+      var isHome = linkPath === "/" && path === "/";
+      var isSection = linkPath !== "/" && path.indexOf(linkPath) === 0;
+      if (isHome || isSection) {
+        link.classList.add("text-primary-600", "dark:text-primary-400");
+      }
+    });
+  })();
+</script>

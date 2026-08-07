@@ -1,4 +1,4 @@
-colorScheme = "blowfish"
+colorScheme = "forest"
 defaultAppearance = "dark"
 autoSwitchAppearance = false
 enableThemeToggle = true
@@ -6,7 +6,7 @@ enableSearch = true
 enableCodeCopy = true
 
 [homepage]
-  layout = "profile"
+  layout = "custom"
   showRecent = true
 
 [article]

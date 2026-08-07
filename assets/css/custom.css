@@ -1,39 +1,3 @@
 @font-face{font-family:'Fira Code';src:url('/fonts/FiraCode-Regular.ttf') format('truetype');font-weight:400}
 @font-face{font-family:'Fira Code';src:url('/fonts/FiraCode-Bold.ttf') format('truetype');font-weight:700}
 body{font-family:'Fira Code',monospace}
-
-.home-socials {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.25rem;
-  margin-top: 0.9rem;
-}
-
-.home-socials .hs-link {
-  display: inline-flex;
-  align-items: center;
-  line-height: 1;
-  color: #b9bcc6;
-  text-decoration: none;
-  transition: color .15s ease, transform .15s ease;
-}
-
-.home-socials .hs-link:hover {
-  color: #ffffff;                transform: translateY(-1px);
-}
-
-.home-socials svg {
-  width: 22px;
-  height: 22px;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 1.9;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.home-socials svg * {
-  fill: none !important;
-  stroke: currentColor !important;
-}
