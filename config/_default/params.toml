@@ -1,0 +1,16 @@
+colorScheme = "blowfish"
+defaultAppearance = "dark"
+autoSwitchAppearance = false
+enableThemeToggle = true
+enableSearch = true
+enableCodeCopy = true
+
+[homepage]
+  layout = "profile"
+  showRecent = true
+
+[article]
+  showDate = true
+  showAuthor = true
+  showReadingTime = true
+  showTableOfContents = true

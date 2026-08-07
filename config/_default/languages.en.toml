@@ -1,0 +1,12 @@
+locale = "en-us"
+weight = 1
+title = "Jadon Lawson"
+
+[params]
+  [params.author]
+    name = "Jadon Lawson"
+    links = [
+      { github = "https://github.com/ghostoptimizer" },
+      { linkedin = "https://linkedin.com/in/jadonlawson" },
+      { email = "mailto:jslawson2025@gmail.com" },
+    ]

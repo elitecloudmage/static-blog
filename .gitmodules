@@ -1,10 +1,4 @@
-[submodule "themes/risotto"]
-	path = themes/risotto
-	url = https://github.com/joeroe/risotto.git
-[submodule "themes/hello-friend-ng"]
-	path = themes/hello-friend-ng
-	url = https://github.com/rhazdon/hugo-theme-hello-friend-ng.git
-[submodule "config/_default/themes/blowfish"]
-	path = config/_default/themes/blowfish
+[submodule "themes/blowfish"]
+	path = themes/blowfish
 	url = https://github.com/nunocoracao/blowfish.git
 	branch = main

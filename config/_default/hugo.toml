@@ -1,0 +1,14 @@
+baseURL = "https://jadonsblog.com/"
+theme = "blowfish"
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 10
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    noClasses = false
