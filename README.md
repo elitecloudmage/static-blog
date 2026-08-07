@@ -1,12 +1,8 @@
-# static-blog
+# [Static Blog](https://jadonsblog.com/)
 
 A fast, low-ops blog built with Hugo and the hello-friend-ng theme, customized with a clean homepage, centered social icons, and simple content sections for posts, projectsi and more. No app servers. No databases. Just pages.
 
-How it works:
-
-# Static Blog
-
-A fast, low-ops blog built with Hugo and the hello-friend-ng theme, customized with a clean homepage, centered social icons, and simple content sections for posts, projectsi and more. No app servers. No databases. Just pages.
+---
 
 How it works:
 -
@@ -20,7 +16,7 @@ How it works:
 
 ---
 
-Why this setup ?
+Why this setup?
 -
 
 • **Speed & reliability:** Static pages are fast and rarely break.
