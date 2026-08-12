@@ -1,34 +1,48 @@
-<header class="sticky top-0 z-40 -mx-6 sm:-mx-14 md:-mx-24 lg:-mx-32 px-6 sm:px-14 md:px-24 lg:px-32 py-4 bg-neutral/90 dark:bg-neutral-800/90 backdrop-blur border-b border-neutral-200 dark:border-neutral-700">
-  <div id="site-nav" class="flex items-center justify-between gap-4">
-    <a href="/" class="text-base font-semibold text-neutral-900 dark:text-neutral shrink-0">
-      {{ site.Params.author.name | default site.Title }}
-    </a>
+<header class="sticky top-0 -mx-6 sm:-mx-14 md:-mx-24 lg:-mx-32 px-6 sm:px-14 md:px-24 lg:px-32 py-4 bg-neutral/90 dark:bg-neutral-800/90 backdrop-blur border-b border-neutral-200 dark:border-neutral-700">
+  <div id="site-nav" class="flex items-center justify-center">
+    <nav
+      class="flex items-center rounded-full border border-neutral-200 dark:border-white/10 bg-neutral-100/80 dark:bg-white/5 px-3 py-1.5 backdrop-blur">
+      <a
+        href="/"
+        class="site-name-link shrink-0 rounded-full bg-white dark:bg-neutral-700 px-3 py-1.5 text-sm font-semibold text-primary-600 dark:text-primary-400 shadow-sm">
+        {{ partial "icon.html" "home" }}
+        {{ site.Params.author.name | default site.Title }}
+      </a>
 
-    <nav class="flex items-center gap-5">
+      <span class="h-5 w-px bg-neutral-300 dark:bg-neutral-600"></span>
+
       {{ range site.Menus.main }}
         <a
           href="{{ .URL }}"
-          class="nav-link text-sm font-medium text-neutral-600 hover:text-primary-600 dark:text-neutral-300 dark:hover:text-primary-400">
+          class="nav-link rounded-full px-3 py-1.5 text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-neutral">
           {{ .Name }}
         </a>
       {{ end }}
 
-      {{ with site.Params.author.links }}
-        <span class="hidden sm:block h-5 w-px bg-neutral-300 dark:bg-neutral-600"></span>
-        <span class="flex items-center gap-3">
-          {{ range . }}
-            {{ range $platform, $link := . }}
-              <a
-                href="{{ $link }}"
-                {{ if in $link "http" }}target="_blank" rel="noopener"{{ end }}
-                aria-label="{{ $platform }}"
-                class="bf-icon-color-hover">
-                {{ partial "icon.html" $platform }}
-              </a>
-            {{ end }}
-          {{ end }}
-        </span>
-      {{ end }}
+      <span class="hidden sm:block h-5 w-px bg-neutral-300 dark:bg-neutral-600"></span>
+
+      <button
+        id="search-button"
+        aria-label="{{ i18n "search.open_button_title" }}"
+        type="button"
+        class="hidden sm:flex items-center justify-center text-base bf-icon-color-hover"
+        title="{{ i18n "search.open_button_title" }}">
+        {{ partial "icon.html" "search" }}
+      </button>
+
+      <button
+        id="appearance-switcher"
+        aria-label="Toggle appearance"
+        type="button"
+        class="text-base bf-icon-color-hover"
+        title="Toggle appearance">
+        <div class="flex items-center justify-center dark:hidden">
+          {{ partial "icon.html" "moon" }}
+        </div>
+        <div class="items-center justify-center hidden dark:flex">
+          {{ partial "icon.html" "sun" }}
+        </div>
+      </button>
     </nav>
   </div>
 </header>
@@ -41,7 +55,13 @@
       var isHome = linkPath === "/" && path === "/";
       var isSection = linkPath !== "/" && path.indexOf(linkPath) === 0;
       if (isHome || isSection) {
-        link.classList.add("text-primary-600", "dark:text-primary-400");
+        link.classList.add(
+          "bg-white",
+          "dark:bg-neutral-800",
+          "text-primary-600",
+          "dark:text-primary-400",
+          "shadow-sm"
+        );
       }
     });
   })();

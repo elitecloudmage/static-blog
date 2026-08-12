@@ -1,3 +1,56 @@
 @font-face{font-family:'Fira Code';src:url('/fonts/FiraCode-Regular.ttf') format('truetype');font-weight:400}
 @font-face{font-family:'Fira Code';src:url('/fonts/FiraCode-Bold.ttf') format('truetype');font-weight:700}
 body{font-family:'Fira Code',monospace}
+
+/* Force pure black background in dark mode, overriding the "forest"
+   color scheme's dark-green --color-neutral-800/900 values. */
+html.dark body {
+  background-color: #0d0d0d !important;
+}
+html.dark header {
+  background-color: #0d0d0d !important;
+}
+
+/* Sticky nav z-index/transparency fix. The header's z-40 Tailwind class
+   was dead (see the "Nav pill spacing" note below — same precompiled-
+   bundle root cause), so it had no effective z-index at all, and its
+   background was 90% opacity, letting scrolled-under page content
+   (the hero avatar/name) show through and appear on top of it. Both
+   fixed here with plain CSS: fully opaque background (no alpha) and an
+   explicit z-index that wins over the page content. */
+header {
+  z-index: 1000;
+}
+
+/* Force the hero avatar's rounded corners — Blowfish's utility CSS was
+   winning over the Tailwind rounded-* class previously used here. */
+.hero__avatar {
+  border-radius: 24px !important;
+  overflow: hidden;
+}
+.hero__avatar img,
+.hero__avatar > * {
+  border-radius: 24px !important;
+}
+
+/* Nav pill spacing, written as plain CSS instead of Tailwind utility
+   classes. Root cause: Blowfish ships a precompiled Tailwind bundle
+   (themes/blowfish/assets/css/compiled/main.css, wired up in
+   themes/blowfish/layouts/partials/head.html) built ahead of time from
+   the theme's own templates only — Hugo just concatenates it with this
+   file at build time, it never re-runs Tailwind against our project's
+   layouts/ overrides. Any utility class we use that Blowfish doesn't
+   also happen to use somewhere in its own templates (gap-3.5, gap-1.5,
+   ml-2.5, ml-10, z-40, whitespace-nowrap, min-h-[80vh], ...) is silently
+   absent from the shipped CSS no matter what markup references it —
+   that's why the nav pill's items and the name button's icon/text were
+   rendering with zero gap despite the gap-* classes being in the markup.
+   Plain CSS here sidesteps the problem entirely. */
+#site-nav nav {
+  gap: 8px;
+}
+.site-name-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

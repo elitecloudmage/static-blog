@@ -1,14 +1,33 @@
 {{ define "main" }}
 
 <section id="hero" class="scroll-mt-24 min-h-[80vh] flex flex-col items-center justify-center text-center gap-4">
-  <div class="flex items-center justify-center w-24 h-24 rounded-full bg-primary-500 text-neutral text-3xl font-bold">
-    JL
+  <div class="inline-grid justify-items-stretch gap-4">
+    <div class="hero__avatar flex items-center justify-center h-24 bg-primary-500 text-neutral text-3xl font-bold">
+      JL
+    </div>
+    <h1 class="whitespace-nowrap text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      {{ site.Params.author.name | default site.Title }}
+    </h1>
   </div>
-  <h1 class="text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-    {{ site.Params.author.name | default site.Title }}
-  </h1>
+
+  {{ with site.Params.author.links }}
+    <span class="flex items-center justify-center gap-4">
+      {{ range . }}
+        {{ range $platform, $link := . }}
+          <a
+            href="{{ $link }}"
+            {{ if in $link "http" }}target="_blank" rel="noopener"{{ end }}
+            aria-label="{{ $platform }}"
+            class="text-neutral-500 hover:text-primary-500 dark:text-neutral-400 dark:hover:text-primary-400">
+            {{ partial "icon.html" $platform }}
+          </a>
+        {{ end }}
+      {{ end }}
+    </span>
+  {{ end }}
+
   <p class="text-lg text-neutral-500 dark:text-neutral-400">
-    Software / DevOps
+    Cloud &amp; Platform Engineer
   </p>
   <a href="/#about" aria-label="Scroll to About" class="mt-6 animate-bounce text-neutral-400 hover:text-primary-500">
     {{ partial "icon.html" "chevron-down" }}
